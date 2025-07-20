@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRoute - Transporte Escolar Seguro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations and effects */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="fas fa-bus text-blue-500 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-blue-600">SafeRoute</span>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium active">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Quem Somos</a>
+                    <a href="#clients" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Clientes</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Contato</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Quem Somos</a>
+                <a href="#clients" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Clientes</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contato</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">Solicitar Orçamento</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg pt-24 pb-32 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left fade-in">
+                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+                        <span class="block">Transporte Escolar</span>
+                        <span class="block text-blue-400">Seguro e Confiável</span>
+                    </h1>
+                    <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Garantimos o transporte seguro dos seus filhos com motoristas experientes, veículos modernos e monitoramento em tempo real.
+                    </p>
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                                    Contrate Agora
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="#about" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 bg-opacity-60 hover:bg-opacity-70 md:py-4 md:text-lg md:px-10">
+                                    Saiba Mais
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center fade-in">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                        <div class="relative block w-full bg-white overflow-hidden rounded-lg">
+                            <img class="w-full" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Crianças entrando no ônibus escolar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Nossos Diferenciais</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Segurança e conforto para seus filhos
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Conheça os benefícios que oferecemos para garantir a tranquilidade dos pais e o bem-estar dos alunos.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Feature 1 -->
+                    <div class="service-card bg-white rounded-lg shadow-md p-6 transition duration-300 ease-in-out">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            <i class="fas fa-shield-alt text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-medium text-gray-900">Segurança em 1º Lugar</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Veículos equipados com cintos de segurança, airbags e monitoramento via GPS 24 horas.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="service-card bg-white rounded-lg shadow-md p-6 transition duration-300 ease-in-out">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            <i class="fas fa-user-graduate text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-medium text-gray-900">Motoristas Qualificados</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Profissionais treinados e experientes, com certificação para transporte de crianças.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="service-card bg-white rounded-lg shadow-md p-6 transition duration-300 ease-in-out">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            <i class="fas fa-clock text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-medium text-gray-900">Pontualidade</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Compromisso com horários para que seus filhos cheguem sempre na hora certa.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="service-card bg-white rounded-lg shadow-md p-6 transition duration-300 ease-in-out">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            <i class="fas fa-bell text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-medium text-gray-900">Acompanhamento em Tempo Real</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Aplicativo exclusivo para os pais acompanharem o trajeto em tempo real.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        <span class="block">Quem Somos</span>
+                        <span class="block text-blue-600">Nossa História</span>
+                    </h2>
+                    <p class="mt-3 text-lg text-gray-500 sm:mt-5">
+                        A SafeRoute nasceu da necessidade de oferecer um transporte escolar seguro, confiável e de qualidade para crianças e adolescentes. Com mais de 15 anos de experiência no mercado, nos tornamos referência em transporte escolar na região.
+                    </p>
+                    <p class="mt-3 text-lg text-gray-500">
+                        Nossa missão é proporcionar tranquilidade aos pais e conforto aos alunos, garantindo que cada trajeto seja realizado com segurança, pontualidade e respeito.
+                    </p>
+                    <div class="mt-8">
+                        <div class="inline-flex rounded-md shadow">
+                            <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                Fale Conosco
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                        <div class="relative block w-full bg-white overflow-hidden rounded-lg">
+                            <img class="w-full" src="https://images.unsplash.com/photo-1600189261867-30e5fed7ce98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Equipe SafeRoute">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Values -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Nossos Valores</h3>
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                                <i class="fas fa-heart text-blue-600 text-xl"></i>
+                            </div>
+                            <h4 class="ml-3 text-lg font-medium text-gray-900">Amor pelo que fazemos</h4>
+                        </div>
+                        <p class="text-gray-600">
+                            Transportamos crianças com o mesmo cuidado e atenção que temos com nossos próprios filhos.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                                <i class="fas fa-hand-holding-heart text-blue-600 text-xl"></i>
+                            </div>
+                            <h4 class="ml-3 text-lg font-medium text-gray-900">Responsabilidade</h4>
+                        </div>
+                        <p class="text-gray-600">
+                            Compromisso total com a segurança e bem-estar de cada criança que transportamos.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                                <i class="fas fa-star text-blue-600 text-xl"></i>
+                            </div>
+                            <h4 class="ml-3 text-lg font-medium text-gray-900">Excelência</h4>
+                        </div>
+                        <p class="text-gray-600">
+                            Buscamos constantemente melhorar nossos serviços e superar as expectativas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Nossos Clientes
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Escolas e famílias que confiam no nosso trabalho
+                </p>
+            </div>
+            
+            <!-- Schools Logos -->
+            <div class="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-6">
+                <div class="col-span-1 flex justify-center items-center">
+                    <img class="h-12 grayscale hover:grayscale-0 transition duration-300" src="https://via.placeholder.com/150x60?text=Escola+A" alt="Escola A">
+                </div>
+                <div class="col-span-1 flex justify-center items-center">
+                    <img class="h-12 grayscale hover:grayscale-0 transition duration-300" src="https://via.placeholder.com/150x60?text=Colégio+B" alt="Colégio B">
+                </div>
+                <div class="col-span-1 flex justify-center items-center">
+                    <img class="h-12 grayscale hover:grayscale-0 transition duration-300" src="https://via.placeholder.com/150x60?text=Instituto+C" alt="Instituto C">
+                </div>
+                <div class="col-span-1 flex justify-center items-center">
+                    <img class="h-12 grayscale hover:grayscale-0 transition duration-300" src="https://via.placeholder.com/150x60?text=Escola+D" alt="Escola D">
+                </div>
+                <div class="col-span-1 flex justify-center items-center">
+                    <img class="h-12 grayscale hover:grayscale-0 transition duration-300" src="https://via.placeholder.com/150x60?text=Colégio+E" alt="Colégio E">
+                </div>
+                <div class="col-span-1 flex justify-center items-center">
+                    <img class="h-12 grayscale hover:grayscale-0 transition duration-300" src="https://via.placeholder.com/150x60?text=Escola+F" alt="Escola F">
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Depoimentos</h3>
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-4">
+                            <img class="w-12 h-12 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ana Silva">
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-900">Ana Silva</h4>
+                                <p class="text-blue-600">Mãe do Pedro</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">
+                            "Estou muito satisfeita com o serviço da SafeRoute. Meu filho sempre chega pontualmente e os motoristas são muito atenciosos. Recomendo!"
+                        </p>
+                        <div class="mt-4 flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-4">
+                            <img class="w-12 h-12 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Carlos Mendes">
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-900">Carlos Mendes</h4>
+                                <p class="text-blue-600">Diretor Escola ABC</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">
+                            "Há 5 anos trabalhamos com a SafeRoute e nunca tivemos problemas. Eles são extremamente profissionais e confiáveis. Nossos alunos estão em boas mãos."
+                        </p>
+                        <div class="mt-4 flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-4">
+                            <img class="w-12 h-12 rounded-full" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Patrícia Oliveira">
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-900">Patrícia Oliveira</h4>
+                                <p class="text-blue-600">Mãe da Maria</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">
+                            "Adoro poder acompanhar o trajeto pelo aplicativo. Me dá muita tranquilidade saber exatamente onde minha filha está a cada momento. Serviço excelente!"
+                        </p>
+                        <div class="mt-4 flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                        Entre em Contato
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-300">
+                        Estamos prontos para responder suas dúvidas e fornecer um orçamento personalizado para suas necessidades.
+                    </p>
+                    
+                    <div class="mt-8">
+                        <div class="flex items-start mb-6">
+                            <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Endereço</h3>
+                                <p class="mt-1 text-gray-300">Rua das Flores, 123 - Centro<br>São Paulo/SP</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                                <i class="fas fa-phone-alt text-white"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Telefone</h3>
+                                <p class="mt-1 text-gray-300">(11) 1234-5678</p>
+                                <p class="mt-1 text-gray-300">(11) 98765-4321 (WhatsApp)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium">Email</h3>
+                                <p class="mt-1 text-gray-300">contato@saferoute.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium">Redes Sociais</h3>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="text-gray-300 hover:text-white">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-white">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-white">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-white">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium">Nome Completo</label>
+                            <div class="mt-1">
+                                <input type="text" id="name" name="name" required class="py-3 px-4 block w-full bg-gray-700 border-gray-600 rounded-md text-white focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium">Email</label>
+                            <div class="mt-1">
+                                <input type="email" id="email" name="email" required class="py-3 px-4 block w-full bg-gray-700 border-gray-600 rounded-md text-white focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium">Telefone</label>
+                            <div class="mt-1">
+                                <input type="tel" id="phone" name="phone" required class="py-3 px-4 block w-full bg-gray-700 border-gray-600 rounded-md text-white focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium">Mensagem</label>
+                            <div class="mt-1">
+                                <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full bg-gray-700 border-gray-600 rounded-md text-white focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="w-full flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-8">
+                                Enviar Mensagem
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Perguntas Frequentes
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Tire suas dúvidas sobre nosso serviço de transporte escolar
+                </p>
+            </div>
+            
+            <div class="mt-12 max-w-3xl mx-auto">
+                <div class="space-y-6">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-gray-50 rounded-lg shadow p-6">
+                        <button class="faq-toggle w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-medium text-gray-900">Como é feita a segurança das crianças durante o transporte?</h3>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content mt-4 hidden">
+                            <p class="text-gray-600">
+                                Todos nossos veículos são equipados com cintos de segurança para todos os passageiros, cadeirinhas quando necessário, e sistema de monitoramento via GPS. Além disso, nossos motoristas são treinados em primeiros socorros e possuem vasta experiência no transporte de crianças.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-gray-50 rounded-lg shadow p-6">
+                        <button class="faq-toggle w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-medium text-gray-900">Como funciona o acompanhamento em tempo real?</h3>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content mt-4 hidden">
+                            <p class="text-gray-600">
+                                Oferecemos um aplicativo exclusivo onde os pais podem acompanhar em tempo real a localização do veículo, rotas percorridas e horários de chegada estimados. O aplicativo também envia notificações quando o aluno embarca e desembarca do veículo.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-gray-50 rounded-lg shadow p-6">
+                        <button class="faq-toggle w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-medium text-gray-900">Qual a política para atrasos?</h3>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content mt-4 hidden">
+                            <p class="text-gray-600">
+                                Nossa política é de tolerância zero para atrasos. Caso ocorra algum imprevisto que possa causar atraso, os pais são imediatamente notificados pelo aplicativo ou por telefone. Em mais de 15 anos de operação, nosso índice de pontualidade é de 99,7%.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-gray-50 rounded-lg shadow p-6">
+                        <button class="faq-toggle w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-medium text-gray-900">Como é calculado o valor do transporte?</h3>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content mt-4 hidden">
+                            <p class="text-gray-600">
+                                O valor é calculado com base na distância entre a residência e a escola, número de dias na semana que o serviço será utilizado, e número de crianças transportadas. Oferecemos descontos para irmãos e para pagamentos anuais. Entre em contato para um orçamento personalizado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                <div>
+                    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                        <span class="block">Pronto para garantir o transporte seguro do seu filho?</span>
+                    </h2>
+                    <p class="mt-3 text-lg text-blue-100">
+                        Entre em contato agora mesmo e solicite um orçamento sem compromisso.
+                    </p>
+                </div>
+                <div class="mt-8 lg:mt-0">
+                    <div class="inline-flex rounded-md shadow">
+                        <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50">
+                            Solicitar Orçamento
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="ml-3 inline-flex rounded-md shadow">
+                        <a href="tel:+551112345678" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-700 hover:bg-blue-800">
+                            <i class="fas fa-phone mr-2"></i>
+                            Ligar Agora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center">
+                        <i class="fas fa-bus text-blue-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-blue-400">SafeRoute</span>
+                    </div>
+                    <p class="mt-4 text-gray-400">
+                        Transporte escolar seguro e confiável para garantir a tranquilidade dos pais e o bem-estar dos alunos.
+                    </p>
+                    <div class="mt-6 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Links</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#home" class="text-base text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="#about" class="text-base text-gray-300 hover:text-white">Quem Somos</a></li>
+                        <li><a href="#clients" class="text-base text-gray-300 hover:text-white">Clientes</a></li>
+                        <li><a href="#contact" class="text-base text-gray-300 hover:text-white">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Contato</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-base text-gray-300">Rua das Flores, 123 - Centro, SP</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-blue-400 mr-2"></i>
+                            <span class="text-base text-gray-300">(11) 1234-5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-2"></i>
+                            <span class="text-base text-gray-300">contato@saferoute.com.br</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2023 SafeRoute Transporte Escolar. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('transform');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Highlight active navigation link on scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === #${sectionId}) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Obrigado pelo seu contato! Entraremos em contato em breve.');
+                form.reset();
+            });
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
